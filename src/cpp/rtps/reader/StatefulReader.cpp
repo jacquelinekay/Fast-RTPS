@@ -208,12 +208,17 @@ bool StatefulReader::processDataMsg(CacheChange_t *change)
 
             if(pWP == nullptr && getGuid().entityId == c_EntityId_SPDPReader)
             {
-                mp_RTPSParticipant->assertRemoteRTPSParticipantLiveliness(change_to_add->writerGUID.guidPrefix);
+                mp_RTPSParticipant->assertRemoteRTPSParticipantLiveliness(change->writerGUID.guidPrefix);
             }
         }
     }
 
     return true;
+}
+
+bool StatefulReader::processDataFragMsg(CacheChange_t *change, uint32_t sampleSize, uint32_t fragmentStartingNum)
+{
+	return false;
 }
 
 bool StatefulReader::processHeartbeatMsg(GUID_t &writerGUID, uint32_t hbCount, SequenceNumber_t &firstSN,
