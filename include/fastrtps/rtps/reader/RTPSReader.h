@@ -23,6 +23,7 @@
 
 namespace eprosima
 {
+<<<<<<< HEAD
     namespace fastrtps
     {
         namespace rtps 
@@ -119,6 +120,13 @@ namespace eprosima
                  * @return Pointer to the associated reader listener.
                  */
                 RTPS_DllAPI ReaderListener* getListener(){ return mp_listener; }
+
+                /**
+                * Switch the ReaderListener kind for the Reader.
+                * It is conscious of InfectableReaderListener and attaches
+                * the new listener to it in case the Reader has one
+                * */
+                RTPS_DllAPI bool setListener(ReaderListener* target);
 
                 /**
                  * Reserve a CacheChange_t.

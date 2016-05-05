@@ -74,6 +74,24 @@ CacheChange_t* RTPSReader::findCacheInFragmentedCachePitStop(const SequenceNumbe
     return fragmentedChangePitStop_->find(sequence_number, writer_guid);
 }
 
+void RTPSReader::setListener(ReaderListener *target){
+	//Check if the Reader has an infectable ReaderListener
+	//Add target as slave in case it has
+	//Free the old one and replace it with target if not
+	bool infectable_host = true;
+	try{
+		dynamic_cast<InfectableReaderListener*>target;
+	}catch(std::bad_cast){
+		//Host is not Infectable, replace and move on
+		delete mp_listener;
+		mp_listener = target;	
+		return;
+	}
+	//If we arrive here it means mp_listener is Infectable
+	mp_listener->attachListener(target);
+	return;
+}
+
 }
 } /* namespace rtps */
 } /* namespace eprosima */
