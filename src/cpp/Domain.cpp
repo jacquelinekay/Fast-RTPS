@@ -138,6 +138,8 @@ Publisher* Domain::createPublisher(Participant* part,PublisherAttributes& att,
 		}
 	}
 	//TODO MOSTRAR MENSAJE DE ERROR WARNING y COMPROBAR QUE EL PUNTERO QUE ME PASA NO ES NULL
+	const char* const METHOD_NAME = "createPublisher";
+  logError(PARTICIPANT,"No participants found, or no participants found with matching GUID");
 	return nullptr;
 }
 

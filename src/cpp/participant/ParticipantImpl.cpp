@@ -145,7 +145,10 @@ Publisher* ParticipantImpl::createPublisher(PublisherAttributes& att,
 		return nullptr;
 	}
 	if(!att.qos.checkQos() || !att.topic.checkQos())
+  {
+    logError(PARTICIPANT,"QoS check failed!");
 		return nullptr;
+  }
 
 	//TODO CONSTRUIR LA IMPLEMENTACION DENTRO DEL OBJETO DEL USUARIO.
 	PublisherImpl* pubimpl = new PublisherImpl(this,p_type,att,listen);
