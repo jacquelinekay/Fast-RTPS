@@ -23,7 +23,6 @@
 
 namespace eprosima
 {
-<<<<<<< HEAD
     namespace fastrtps
     {
         namespace rtps 
